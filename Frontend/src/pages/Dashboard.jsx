@@ -45,75 +45,81 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div style={{ minHeight: '100vh', backgroundColor: '#f8f9fa' }}>
       {/* Header */}
-      <header className="bg-blue-600 text-white shadow">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <div>
-            <h1 className="text-2xl font-bold">Workout Tracker</h1>
-            <p className="text-blue-100">Welcome, {user?.name}!</p>
-          </div>
-          <div className="flex gap-4">
-            <button
-              onClick={() => navigate('/account')}
-              className="bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded-lg font-semibold transition"
-            >
-              Account Settings
-            </button>
-            <button
-              onClick={handleLogout}
-              className="bg-red-500 hover:bg-red-700 px-4 py-2 rounded-lg font-semibold transition"
-            >
-              Logout
-            </button>
+      <header style={{ backgroundColor: '#2c3e50', color: '#ffffff', padding: '2rem 0', borderBottom: '1px solid #34495e' }}>
+        <div className="container-centered">
+          <div className="d-flex justify-content-between align-items-center">
+            <div>
+              <h1 style={{ color: '#ffffff', margin: 0, fontSize: '2rem', fontWeight: '700' }}>Workout Tracker</h1>
+            </div>
+            <div className="d-flex align-items-center gap-3">
+              <div style={{ textAlign: 'right', color: '#bdc3c7' }}>
+                <div style={{ fontSize: '0.95rem', fontWeight: 600 }}>Welcome back, {user?.name}</div>
+              </div>
+              <button onClick={() => navigate('/account')} className="btn btn-light">Account</button>
+              <button onClick={handleLogout} className="btn btn-danger">Logout</button>
+            </div>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-4 py-8">
-        {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-            {error}
-          </div>
-        )}
+      <main style={{ flex: 1, backgroundColor: '#f8f9fa', padding: '3rem 0' }}>
+        <div className="container-centered">
+          {error && (
+            <div className="alert alert-danger mb-4">
+              {error}
+            </div>
+          )}
 
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-800">Your Workouts</h2>
-          <button
-            onClick={() => navigate('/add-workout')}
-            className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition"
-          >
-            + Add Workout
-          </button>
-        </div>
-
-        {loading ? (
-          <div className="text-center py-12">
-            <div className="text-xl text-gray-600">Loading your workouts...</div>
-          </div>
-        ) : workouts.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-xl text-gray-600 mb-4">No workouts yet. Start your fitness journey!</p>
+          <div className="d-flex justify-content-between align-items-center mb-5">
+            <div>
+              <h2 style={{ color: '#2c3e50', fontSize: '2rem', fontWeight: '700', margin: 0 }}>Your Workouts</h2>
+              <p style={{ color: '#555', margin: '0.5rem 0 0 0' }}>Create and manage your fitness routines</p>
+            </div>
             <button
               onClick={() => navigate('/add-workout')}
-              className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition"
+              className="btn btn-primary"
             >
-              Add Your First Workout
+              + New Workout
             </button>
           </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {workouts.map((workout) => (
-              <WorkoutCard
-                key={workout._id}
-                workout={workout}
-                onDelete={handleDeleteWorkout}
-                onEdit={() => navigate(`/edit-workout/${workout._id}`)}
-              />
-            ))}
-          </div>
-        )}
+
+          {loading ? (
+            <div className="text-center py-5">
+              <div className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+              <p className="mt-3" style={{ color: '#555' }}>Loading your workouts...</p>
+            </div>
+          ) : workouts.length === 0 ? (
+            <div className="card text-center py-5" style={{ borderColor: '#ddd' }}>
+              <div className="card-body">
+                <h5 className="card-title" style={{ color: '#2c3e50' }}>No workouts yet</h5>
+                <p className="card-text" style={{ color: '#555' }}>Create your first workout to get started</p>
+                <button
+                  onClick={() => navigate('/add-workout')}
+                  className="btn btn-primary"
+                >
+                  Create Workout
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="row g-4">
+              {workouts.map((workout) => (
+                <div key={workout._id} className="col-12 col-md-6 col-lg-4">
+                  <WorkoutCard
+                    workout={workout}
+                    onEdit={() => navigate(`/edit-workout/${workout._id}`)}
+                    onDelete={handleDeleteWorkout}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </main>
     </div>
   );

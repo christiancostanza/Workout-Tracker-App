@@ -77,64 +77,69 @@ const Account = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div style={{ minHeight: '100vh', backgroundColor: '#f8f9fa' }}>
       {/* Header */}
-      <header className="bg-blue-600 text-white shadow">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Account Settings</h1>
+      <header style={{ backgroundColor: '#2c3e50', color: '#ffffff', padding: '2rem 0', borderBottom: '1px solid #34495e' }}>
+        <div className="container-centered">
+          <div className="d-flex justify-content-between align-items-center">
+          <div>
+            <h1 style={{ color: '#ffffff', margin: 0, fontSize: '2rem', fontWeight: '700' }}>Account Settings</h1>
+            <p style={{ color: '#bdc3c7', margin: '0.5rem 0 0 0', fontSize: '0.95rem' }}>Manage your account and preferences</p>
+          </div>
           <button
             onClick={() => navigate('/dashboard')}
-            className="bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded-lg font-semibold transition"
+            className="btn btn-light btn-sm"
           >
             Back to Dashboard
           </button>
+          </div>
         </div>
       </header>
 
-      <main className="max-w-2xl mx-auto px-4 py-8">
-        <div className="bg-white rounded-lg shadow">
+      <main className="container-centered" style={{ padding: '3rem 0' }}>
+        <div className="card">
           {/* Tabs */}
-          <div className="flex border-b">
+          <div className="flex border-b border-gray-200 bg-gray-50">
             <button
               onClick={() => setActiveTab('profile')}
-              className={`flex-1 py-4 font-semibold text-center transition ${
+              className={`flex-1 py-5 font-semibold text-center transition text-base ${
                 activeTab === 'profile'
-                  ? 'border-b-2 border-blue-600 text-blue-600'
-                  : 'text-gray-600 hover:text-gray-800'
+                  ? 'border-b-4 border-purple-600 text-purple-600'
+                  : 'text-gray-700 hover:text-gray-900'
               }`}
             >
               Profile
             </button>
             <button
               onClick={() => setActiveTab('password')}
-              className={`flex-1 py-4 font-semibold text-center transition ${
+              className={`flex-1 py-5 font-semibold text-center transition text-base ${
                 activeTab === 'password'
-                  ? 'border-b-2 border-blue-600 text-blue-600'
-                  : 'text-gray-600 hover:text-gray-800'
+                  ? 'border-b-4 border-purple-600 text-purple-600'
+                  : 'text-gray-700 hover:text-gray-900'
               }`}
             >
               Password
             </button>
             <button
               onClick={() => setActiveTab('security')}
-              className={`flex-1 py-4 font-semibold text-center transition ${
+              className={`flex-1 py-5 font-semibold text-center transition text-base ${
                 activeTab === 'security'
-                  ? 'border-b-2 border-blue-600 text-blue-600'
-                  : 'text-gray-600 hover:text-gray-800'
+                  ? 'border-b-4 border-purple-600 text-purple-600'
+                  : 'text-gray-700 hover:text-gray-900'
               }`}
             >
               Security
             </button>
           </div>
 
-          <div className="p-8">
+          <div className="p-10">
             {error && (
-              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+              <div className="alert-error px-6 py-4 rounded-lg mb-8">
                 {error}
               </div>
             )}
             {success && (
-              <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+              <div className="alert-success px-6 py-4 rounded-lg mb-8">
                 {success}
               </div>
             )}
@@ -142,30 +147,30 @@ const Account = () => {
             {/* Profile Tab */}
             {activeTab === 'profile' && (
               <form onSubmit={handleProfileUpdate}>
-                <div className="mb-4">
-                  <label className="block text-gray-700 font-semibold mb-2">Full Name</label>
+                <div className="mb-8">
+                  <label className="block text-gray-900 font-semibold mb-3">Full Name</label>
                   <input
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="form-input w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900"
                   />
                 </div>
-                <div className="mb-6">
-                  <label className="block text-gray-700 font-semibold mb-2">Email</label>
+                <div className="mb-10">
+                  <label className="block text-gray-900 font-semibold mb-3">Email Address</label>
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="form-input w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={loading}
-                  className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg transition disabled:opacity-50"
+                  className="btn-primary text-white font-semibold py-3 px-8 rounded-lg transition"
                 >
                   {loading ? 'Updating...' : 'Update Profile'}
                 </button>
@@ -175,43 +180,46 @@ const Account = () => {
             {/* Password Tab */}
             {activeTab === 'password' && (
               <form onSubmit={handlePasswordChange}>
-                <div className="mb-4">
-                  <label className="block text-gray-700 font-semibold mb-2">Current Password</label>
+                <div className="mb-8">
+                  <label className="block text-gray-900 font-semibold mb-3">Current Password</label>
                   <input
                     type="password"
                     name="currentPassword"
                     value={formData.currentPassword}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="form-input w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900"
+                    placeholder="••••••••"
                   />
                 </div>
-                <div className="mb-4">
-                  <label className="block text-gray-700 font-semibold mb-2">New Password</label>
+                <div className="mb-8">
+                  <label className="block text-gray-900 font-semibold mb-3">New Password</label>
                   <input
                     type="password"
                     name="newPassword"
                     value={formData.newPassword}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="form-input w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900"
+                    placeholder="••••••••"
                   />
                 </div>
-                <div className="mb-6">
-                  <label className="block text-gray-700 font-semibold mb-2">Confirm New Password</label>
+                <div className="mb-10">
+                  <label className="block text-gray-900 font-semibold mb-3">Confirm New Password</label>
                   <input
                     type="password"
                     name="confirmPassword"
                     value={formData.confirmPassword}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="form-input w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900"
+                    placeholder="••••••••"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={loading}
-                  className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg transition disabled:opacity-50"
+                  className="btn-primary text-white font-semibold py-3 px-8 rounded-lg transition"
                 >
                   {loading ? 'Changing Password...' : 'Change Password'}
                 </button>
@@ -221,28 +229,28 @@ const Account = () => {
             {/* Security Tab */}
             {activeTab === 'security' && (
               <div>
-                <h3 className="text-lg font-bold text-gray-800 mb-4">Account Security</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-8">Account Security</h3>
                 <div className="space-y-4">
-                  <div className="p-4 bg-gray-50 rounded-lg">
-                    <h4 className="font-semibold text-gray-800 mb-2">Two-Factor Authentication</h4>
-                    <p className="text-gray-600 text-sm mb-4">Add an extra layer of security to your account.</p>
-                    <button className="text-blue-500 hover:text-blue-700 font-semibold text-sm">
+                  <div className="p-6 bg-blue-50 border border-blue-200 rounded-lg">
+                    <h4 className="font-semibold text-gray-900 mb-2">Two-Factor Authentication</h4>
+                    <p className="text-gray-700 text-sm mb-4">Add an extra layer of security to your account.</p>
+                    <button className="text-purple-600 hover:text-purple-700 font-semibold text-sm transition">
                       Enable 2FA
                     </button>
                   </div>
-                  <div className="p-4 bg-gray-50 rounded-lg">
-                    <h4 className="font-semibold text-gray-800 mb-2">Active Sessions</h4>
-                    <p className="text-gray-600 text-sm mb-4">Manage your active sessions.</p>
-                    <button className="text-blue-500 hover:text-blue-700 font-semibold text-sm">
+                  <div className="p-6 bg-green-50 border border-green-200 rounded-lg">
+                    <h4 className="font-semibold text-gray-900 mb-2">Active Sessions</h4>
+                    <p className="text-gray-700 text-sm mb-4">Manage your active sessions and devices.</p>
+                    <button className="text-purple-600 hover:text-purple-700 font-semibold text-sm transition">
                       View Sessions
                     </button>
                   </div>
-                  <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-                    <h4 className="font-semibold text-red-800 mb-2">Delete Account</h4>
-                    <p className="text-red-600 text-sm mb-4">
+                  <div className="p-6 bg-red-50 border border-red-200 rounded-lg">
+                    <h4 className="font-semibold text-gray-900 mb-2">Delete Account</h4>
+                    <p className="text-gray-700 text-sm mb-4">
                       Permanently delete your account and all associated data.
                     </p>
-                    <button className="text-red-500 hover:text-red-700 font-semibold text-sm">
+                    <button className="text-red-600 hover:text-red-700 font-semibold text-sm transition">
                       Delete Account
                     </button>
                   </div>
@@ -252,16 +260,16 @@ const Account = () => {
           </div>
 
           {/* Footer */}
-          <div className="border-t p-8 flex justify-end gap-4">
+          <div className="border-t border-gray-200 bg-gray-50 p-10 flex justify-end gap-4">
             <button
               onClick={() => navigate('/dashboard')}
-              className="bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2 px-6 rounded-lg transition"
+              className="btn-secondary text-gray-900 font-semibold py-2 px-6 rounded-lg transition"
             >
               Close
             </button>
             <button
               onClick={handleLogout}
-              className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-6 rounded-lg transition"
+              className="btn-danger text-white font-semibold py-2 px-6 rounded-lg transition"
             >
               Logout
             </button>
