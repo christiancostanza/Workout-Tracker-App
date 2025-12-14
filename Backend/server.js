@@ -16,7 +16,7 @@ connectDB();
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    'https://workout-tracker-app-lkvs.onrender.com'
+    'https://cs195workouttracker.netlify.app'
   ],
   credentials: true
 }));app.use(morgan('dev'));
