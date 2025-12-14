@@ -13,13 +13,19 @@ const PORT = process.env.PORT || 3000;
 
 connectDB();
 
+// Configure allowed origins via environment variable for flexible deployments
+// Example: ALLOWED_ORIGINS="http://localhost:5173,https://your-site.netlify.app"
+const allowedOrigins = (process.env.ALLOWED_ORIGINS || 'http://localhost:5173,https://cs195workouttracker.netlify.app')
+  .split(',')
+  .map((s) => s.trim())
+  .filter(Boolean);
+
 app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    'https://cs195workouttracker.netlify.app'
-  ],
-  credentials: true
-}));app.use(morgan('dev'));
+  origin: allowedOrigins,
+  credentials: true,
+}));
+
+app.use(morgan('dev'));
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
