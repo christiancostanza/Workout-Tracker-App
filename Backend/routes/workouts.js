@@ -36,6 +36,10 @@ router.put('/:id', auth, async (req, res) => {
   try {
     const workout = await Workout.findById(req.params.id);
     if (!workout) return res.status(404).json({ message: 'Workout not found' });
+    if (!workout.user) {
+      console.error('Workout missing user field', { id: req.params.id, workout });
+      return res.status(500).json({ message: 'Workout record malformed' });
+    }
     if (workout.user.toString() !== req.user.id) return res.status(403).json({ message: 'Unauthorized' });
 
     const { name, description, exercises } = req.body;
@@ -56,9 +60,15 @@ router.delete('/:id', auth, async (req, res) => {
   try {
     const workout = await Workout.findById(req.params.id);
     if (!workout) return res.status(404).json({ message: 'Workout not found' });
+    if (!workout.user) {
+      console.error('Workout missing user field', { id: req.params.id, workout });
+      return res.status(500).json({ message: 'Workout record malformed' });
+    }
     if (workout.user.toString() !== req.user.id) return res.status(403).json({ message: 'Unauthorized' });
 
-    await workout.remove();
+    console.log('Deleting workout', req.params.id, 'requested by user', req.user.id);
+    // prefer deleteOne for clarity
+    await workout.deleteOne();
     res.json({ message: 'Workout removed' });
   } catch (err) {
     console.error(err);
