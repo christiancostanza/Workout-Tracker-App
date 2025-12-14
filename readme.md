@@ -42,8 +42,8 @@ Authentication and protected routes are implemented using JSON Web Tokens (JWT).
 
 | View | Path |
 | ---- | ---- |
-| Dashboard | screenshots\Screenshot 2025-12-14 153149.png |
-| Add Workout | screenshots\Screenshot 2025-12-14 153216.png |
+| Dashboard | '/screenshots/Screenshot 2025-12-14 153149.png' |
+| Add Workout | '/screenshots/Screenshot 2025-12-14 153216.png' |
 
 ---
 
