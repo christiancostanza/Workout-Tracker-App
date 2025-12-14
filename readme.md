@@ -8,8 +8,6 @@ A simple full-stack workout tracker to log exercises, manage routines, and monit
 
 This is a full-stack application for tracking workouts. Users can register and log in, then create, view, update, and delete workouts tied to their account. It's aimed at anyone who wants a lightweight tool to record workouts and see quick summaries of their activity.
 
-**Example:**
-An authenticated workout tracker that stores user workouts in MongoDB and presents a responsive React UI for managing entries.
 
 ---
 
@@ -17,10 +15,8 @@ An authenticated workout tracker that stores user workouts in MongoDB and presen
 
 | Type                         | Link                                                           |
 | ---------------------------- | -------------------------------------------------------------- |
-| **Frontend (Deployed Site)** | [https://your-frontend-url.com](https://your-frontend-url.com) |
-| **Backend (API Base URL)**   | [https://your-backend-url.com](https://your-backend-url.com)   |
-
-> Test these in an incognito window before submission.
+| **Frontend (Deployed Site)** | [https://cs195workouttracker.netlify.app/] |(https://cs195workouttracker.netlify.app/)
+| **Backend (API Base URL)**   | [https://workout-tracker-app-backend-28fg.onrender.com/](https://workout-tracker-app-backend-28fg.onrender.com/)   |
 
 ---
 
@@ -46,8 +42,8 @@ Authentication and protected routes are implemented using JSON Web Tokens (JWT).
 
 | View | Path |
 | ---- | ---- |
-| Dashboard | /screenshots/dashboard.png |
-| Add Workout | /screenshots/add-workout.png |
+| Dashboard | screenshots\Screenshot 2025-12-14 153149.png |
+| Add Workout | screenshots\Screenshot 2025-12-14 153216.png |
 
 ---
 
@@ -133,8 +129,6 @@ npm run dev
 
 ## 🛠 API Documentation
 
-Document the **main 3–5 routes**:
-
 ### **GET /api/workouts**
 
 Returns all workouts for the authenticated user.
@@ -170,12 +164,12 @@ Create an account and sign in. On success, both return a JWT token.
 
 ### **Frontend**
 
-* Recommended: Vercel or Netlify
+* Recommended: Netlify
 * Build command: `npm run build`
 
 ### **Backend**
 
-* Recommended: Render or Railway
+* Recommended: Render
 * Set environment variables in the hosting dashboard (e.g., `MONGO_URI`, `JWT_SECRET`)
 
 
@@ -184,12 +178,8 @@ Create an account and sign in. On success, both return a JWT token.
 ## 🎥 Video Walkthrough
 
 **Link to Loom/YouTube:**
-[https://your-video-link.com](https://your-video-link.com)
+[https://www.loom.com/share/d8b011f8656847e394b72b29732c1343](https://www.loom.com/share/d8b011f8656847e394b72b29732c1343)
 
-* **0:00–0:30** Overview
-* **0:30–1:30** Core features demo
-* **1:30–2:30** Advanced feature
-* **2:30–3:00** Technical challenge solved
 
 ---
 
@@ -201,19 +191,19 @@ The hardest part was coordinating authentication across the frontend and backend
 
 ### **2. What are you most proud of?**
 
-I'm proud of implementing end-to-end authentication and a clean, reusable component structure on the frontend that made the UI simple to extend.
+I'm most proud of the totality of the whole project, I've worked on all of the parts seperately for this project but I've never worked on all of them alone and made the full project solo.
 
 ### **3. What would you do differently next time?**
 
-Next time I'd add unit/integration tests earlier and consider a small analytics panel to visualize progress over time.
+Next time I would probably focus on the whole project instead of focusing on the frontend first and then focusing on the backend.
 
 ### **4. How did you incorporate feedback from the 12/5 check-in gallery?**
 
-Based on feedback, I focused on stabilizing authentication flows and reorganized components for readability. I reduced scope on advanced visualizations to ensure CRUD and auth were robust.
+My project did not get a ton of feedback to integrate, the big thing people mentioned was creating a nicer looking frontend which I did and focused on.
 
 ---
 
 # Acknowledgments / AI Usage Disclosure
 
-Used tools: VSCode, Vite, Node.js. Some documentation and debugging assistance came from ChatGPT and GitHub Copilot for small suggestions.
+Used tools: VSCode, Vite, Node.js. Some documentation and debugging assistance came from ChatGPT and GitHub Copilot for small suggestions as well as helping with css design.
 
