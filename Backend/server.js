@@ -11,21 +11,22 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Connect to DB
 connectDB();
 
-// Middleware
-app.use(cors());
-app.use(morgan('dev'));
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://workout-tracker-app-lkvs.onrender.com'
+  ],
+  credentials: true
+}));app.use(morgan('dev'));
 app.use(express.json());
 
-// Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/workouts', workoutRoutes);
 
 app.get('/', (req, res) => res.send({ ok: true, message: 'Workout Tracker API' }));
 
-// Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(err.status || 500).json({ message: err.message || 'Server Error' });
