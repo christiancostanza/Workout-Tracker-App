@@ -40,10 +40,10 @@ Authentication and protected routes are implemented using JSON Web Tokens (JWT).
 > Include 2–4 screenshots of your app.
 > Use relative paths (e.g., `/screenshots/home.png`) or full URLs.
 
-| View | Path |
-| ---- | ---- |
-| Dashboard | '/screenshots/Screenshot 2025-12-14 153149.png' |
-| Add Workout | '/screenshots/Screenshot 2025-12-14 153216.png' |
+| View | Preview |
+| ---- | ------- |
+| Dashboard | ![Dashboard](screenshots/Screenshot%202025-12-14%20153149.png) |
+| Add Workout | ![Add Workout](screenshots/Screenshot%202025-12-14%20153216.png) |
 
 ---
 
@@ -205,5 +205,5 @@ My project did not get a ton of feedback to integrate, the big thing people ment
 
 # Acknowledgments / AI Usage Disclosure
 
-Used tools: VSCode, Vite, Node.js. Some documentation and debugging assistance came from ChatGPT and GitHub Copilot for small suggestions as well as helping with css design.
+Used tools: VSCode, Vite, Node.js. Some documentation and debugging assistance came from ChatGPT and GitHub Copilot for small suggestions as well as helping with css design. I also used copilot for some readme changes.
 
