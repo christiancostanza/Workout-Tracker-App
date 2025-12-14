@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:10000/api';
+const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? 'https://workout-tracker-app-backend-28fg.onrender.com/api' : 'http://localhost:10000/api');
 
 const api = axios.create({
   baseURL: API_URL,
